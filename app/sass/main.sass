@@ -3,7 +3,7 @@
 *
   outline: none
   box-sizing: border-box
-  &:before
+  &:before, &:after
     box-sizing: border-box
 
 html
@@ -47,16 +47,19 @@ h4
   font-weight: 500
   font-family: $brendFont
 
+strong
+  font-weight: bold
 p
   font-size: 18px
   font-weight: 400
   line-height: normal
 img
+  display: block
   max-width: 100%
   height: auto
-  -ms-interpolation-mode: bicubic
-  display: inline-block
   vertical-align: middle
+  border:
+  -ms-interpolation-mode:
 
 iframe
     width: 100%
@@ -104,6 +107,23 @@ input:-ms-input-placeholder
   line-height: 50px
   font-weight: 400
 
+
+.link
+  &:hover
+    &:after
+      width: 100%
+  &:after
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 3px;
+    background-color: #7bd389;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 .flexB
   display: flex
   align-items: center

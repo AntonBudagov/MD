@@ -1,24 +1,111 @@
-.col
+.card
   width: 50%
+  position: relative
+
 .materialCard
   position: relative
   height: 0
-  padding-bottom: calc(100% - 16px)
+  padding-bottom: calc(100% - 32px)
   margin-bottom: 6.6em
   &:before
     content: ''
 
   .mc-content
     position: absolute;
-    right: 0;
+    right: 16px;
     top: 0;
     bottom: 16px;
     left: 16px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
+    overflow: hidden
+
+  h2
+    position: absolute;
+    top: calc(100% - 16px);
+    left: 0;
+    width: 100%;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 1.4em;
+    line-height: 1.6em;
+    margin: 0;
+    z-index: 10;
+    transition: all 0.3s;
+    background-color: #4a148c;
+    border-radius: 3px
+    span
+      font-size: 16px
+      display: block
+    &:before
+      content: ' ';
+      position: absolute;
+      left: 0;
+      top: -15px;
+      border-radius: 3px
+      // width: 20px
+      // height: 20px
+      // transform: rotate(45deg)
+      // background-color: #4a148c
+      transition: all 0.3s;
+      width: 0;
+      border: 8px solid;
+      border-top-color: transparent;
+      border-right-color: #311B92;
+      border-bottom-color: #311B92;
+      border-left-color: transparent;
+    &:after
+      content: ' ';
+      position: absolute;
+      right: 0;
+      top: -15px;
+      border-radius: 3px
+      // width: 20px
+      // height: 20px
+      // transform: rotate(45deg)
+      // background-color: #4a148c
+      transition: all 0.3s;
+      width: 0;
+      border: 8px solid;
+      border-top-color: transparent;
+      border-left-color: #311B92;
+      border-bottom-color: #311B92;
+      border-right-color: transparent;
+
+  .mc-description
+    display: block
+    transform: translateX(0%) scale(0)
+    // transition: transform ease-in 3 s;
+    background-color: #311B92
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 3333
+    opacity: 0
+    transition: .4s ease-in
+    ul
+      padding: 5rem
+
+      li
+        will-change: transform, opacity;
+        margin: 25px 0;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all .4s ease-out;
+        color: #fff
+
+      // &.active
+      // transform: translateY(0);
+      // opacity: 1;
+
+      &.active
+        @for $i from 1 through 6
+          li:nth-child(#{$i})
+            transition-delay: $i * .4s;
+          // transform: translateY(10px * $i)
+
+
+
+
   .wrappImg
     overflow: hidden;
     position: absolute;
@@ -27,10 +114,82 @@
     width: 100%;
     height: 100%;
     z-index: 3;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-// : #FFCDD2
+    transition: all 3.3s;
+    transform: translateX(0%) scale(1)
+  .close
+    background-color: #fff
+    right: 16px;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    bottom: 20px;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    line-height: 50px;
+    cursor: pointer;
+    transform: translateX(-10%) scale(0)
+    transition: transform .3s//cubic-bezier(0.6, -0.28, 0.74, 0.05) 3s
+    span
+      color: #311B92;
+    &.active
+      transform: scale(1)
+  .btnActionMC
+    right: 16px;
+    text-align: center;
+    background-color: #311B92;
+    position: absolute;
+    bottom: 20px;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    line-height: 50px;
+    cursor: pointer;
+    // transition: transform 0.3s
+    color: #fff
+    font-size: 36px
+    // transition: 3.2s transform
+    transition: transform .3s//cubic-bezier(0.6, -0.28, 0.74, 0.05) 3s
+    will-change: transform scale opacity
+
+    span
+      // position: absolute
+    //   content: '+'
+    &:hover
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    &.active
+      transform: scale(22)
+      transform-origin: center;
+      // left: 50%;
+
+      // background-color: transparent
+      // transform: scale(12);
+      // bottom: 100%;
+      // right: 40%;
+      // transform-origin: bottom right;
+      pointer-events: none;
+      // transition: 0.3s all
+      // transition: 10.1s background
+      span
+        transition: 0.1s opacity ease-in;
+        transform: translateY(100%);
+        opacity: 0;
+
+      // transform: rotate(45deg)
+      + .wrappImg
+        transform: translateX(100%) scale(.5)
+        + .mc-description
+          transform: translateX(0%) scale(1)
+          opacity: 1
+          .close
+            transform: scale(1)
+          li
+            transform: translateY(0);
+            opacity: 1;
+
+
 

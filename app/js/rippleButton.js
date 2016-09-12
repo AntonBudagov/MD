@@ -46,5 +46,21 @@
       $('#myList .card').not(':lt('+x+')').hide();
   });
 
+
+// show more btn Plus-----------------------------------------------------------
+$('.open').click(function(){
+  // $('.close').delay(1000).css({"transform":"scale(1)"})
+  $(this).toggleClass('active');
+  $(this).parent().find('ul').toggleClass('active');
+
+
+})
+
+$('.close').click(function(){
+  $('.open').toggleClass('active')
+  $(this).parent().find('ul').toggleClass('active');
+
+})
+
 })(window);
 
